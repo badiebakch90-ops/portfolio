@@ -344,6 +344,14 @@
     border-color: rgba(180,135,63,0.24);
     box-shadow: var(--cta-secondary-hover-shadow);
   }
+  html.light .hero-inline-link {
+    color: #6f512d;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.34);
+  }
+  html.light .hero-inline-link:hover {
+    color: var(--gold);
+    text-shadow: 0 0 14px rgba(180,135,63,0.18);
+  }
   html.light .hero-grid-line {
     background: rgba(120,89,45,0.08);
     opacity: 0.72;
@@ -499,6 +507,38 @@
   html.light .project-card::after {
     background: linear-gradient(90deg, #a77b35, #d7b375);
   }
+  html.light .project-visual {
+    border-color: rgba(167,123,53,0.12);
+    background:
+      radial-gradient(circle at 18% 18%, rgba(180,135,63,0.14), transparent 22%),
+      linear-gradient(135deg, rgba(255,251,245,0.98), rgba(243,232,217,0.96));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.82);
+  }
+  html.light .project-visual::before {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.68), rgba(255,255,255,0) 28%),
+      linear-gradient(90deg, transparent 0, transparent calc(33% - 1px), rgba(141,100,44,0.06) calc(33% - 1px), rgba(141,100,44,0.06) 33%, transparent 33%, transparent calc(66% - 1px), rgba(141,100,44,0.05) calc(66% - 1px), rgba(141,100,44,0.05) 66%, transparent 66%);
+  }
+  html.light .project-visual::after {
+    background: rgba(141,100,44,0.12);
+    box-shadow:
+      0 0 0 0.9rem rgba(255,255,255,0.58),
+      4.2rem 0 0 rgba(141,100,44,0.11),
+      8.4rem 0 0 rgba(141,100,44,0.08);
+  }
+  html.light .project-visual-chip {
+    color: #7b572c;
+    background: rgba(255,249,240,0.88);
+    border-color: rgba(167,123,53,0.14);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.78);
+  }
+  html.light .project-visual-screen span {
+    border-color: rgba(167,123,53,0.1);
+    background: rgba(255,252,247,0.84);
+  }
+  html.light .project-focus {
+    color: #986d30;
+  }
   html.light .projects-summary,
   html.light .projects-results {
     color: #5d4f42;
@@ -549,6 +589,16 @@
   html.light .contact-card-title:hover {
     color: var(--gold);
     text-shadow: 0 0 14px rgba(180,135,63,0.14);
+  }
+  html.light .project-link-secondary {
+    color: #463425;
+    background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(247,239,228,0.98));
+    border-color: rgba(167,123,53,0.14);
+    box-shadow: 0 12px 24px rgba(96,67,36,0.08), inset 0 1px 0 rgba(255,255,255,0.92);
+  }
+  html.light .project-link-secondary:hover {
+    background: linear-gradient(180deg, rgba(255,255,255,1), rgba(249,241,230,1));
+    border-color: rgba(167,123,53,0.2);
   }
   html.light .contact-card,
   html.light .availability-item {
@@ -624,6 +674,10 @@
     background: var(--cta-primary-bg-hover);
     box-shadow: var(--cta-primary-shadow-hover);
   }
+  html.light .contact-submit:disabled {
+    background: linear-gradient(135deg, rgba(183,141,72,0.86), rgba(141,100,44,0.82));
+    box-shadow: var(--cta-primary-shadow);
+  }
   html.light .contact-form-status {
     color: #4f4338;
   }
@@ -672,6 +726,14 @@
   }
   html.light .footer-links a:hover {
     color: var(--text);
+  }
+  html.light .site-loader {
+    background:
+      radial-gradient(circle at 16% 12%, rgba(180,135,63,0.16), transparent 24%),
+      linear-gradient(180deg, rgba(252,247,239,0.98), rgba(242,232,217,0.98));
+  }
+  html.light .site-loader-label {
+    color: #7a6856;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -732,6 +794,70 @@
       color 0.35s ease,
       transform 0.35s ease,
       opacity 0.35s ease;
+  }
+
+  .site-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 220;
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(circle at 20% 15%, rgba(201,169,110,0.12), transparent 26%),
+      linear-gradient(180deg, rgba(6,6,6,0.98), rgba(14,14,14,0.98));
+    transition: opacity 0.45s ease, visibility 0.45s ease;
+  }
+
+  body.is-ready .site-loader {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .site-loader-mark {
+    display: grid;
+    gap: 0.9rem;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .site-loader-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
+
+  .site-loader-title em {
+    display: block;
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .site-loader-line {
+    width: min(14rem, 46vw);
+    height: 1px;
+    overflow: hidden;
+    background: rgba(201,169,110,0.18);
+    border-radius: 999px;
+  }
+
+  .site-loader-line::after {
+    content: '';
+    display: block;
+    width: 42%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation: loaderSweep 1.2s ease-in-out infinite;
+  }
+
+  .site-loader-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(232,228,220,0.64);
   }
 
   .skip-link {
@@ -945,6 +1071,7 @@
   .nav-links a:focus-visible,
   .nav-logo:focus-visible,
   .hero-cta:focus-visible,
+  .hero-inline-link:focus-visible,
   .project-link:focus-visible,
   .projects-note a:focus-visible,
   .contact-link:focus-visible,
@@ -1318,6 +1445,26 @@
     box-shadow: var(--cta-secondary-hover-shadow);
   }
 
+  .hero-inline-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    text-decoration: none;
+    opacity: 0;
+    animation: fadeUp 0.9s 1.08s forwards;
+    transition: gap 0.3s, color 0.3s, text-shadow 0.3s;
+  }
+  .hero-inline-link:hover {
+    gap: 0.85rem;
+    color: var(--gold);
+    text-shadow: 0 0 18px rgba(201,169,110,0.16);
+  }
+
   .hero-portrait-wrap {
     position: relative;
     justify-self: end;
@@ -1628,8 +1775,8 @@
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5px;
-    background: var(--border);
+    gap: 1rem;
+    align-items: stretch;
   }
 
   .project-card[hidden] {
@@ -1637,15 +1784,25 @@
   }
 
   .project-card {
-    background: var(--bg);
-    padding: 2.5rem;
+    display: grid;
+    gap: 1.2rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 1.7rem;
+    box-shadow: var(--card-shadow);
+    padding: 1.2rem;
     position: relative;
     overflow: hidden;
     cursor: default;
-    transition: background 0.4s;
+    transition: background 0.4s, border-color 0.35s, box-shadow 0.35s, transform 0.35s;
     font-size: 1.05rem;
   }
-  .project-card:hover { background: var(--surface); }
+  .project-card:hover {
+    background: linear-gradient(180deg, rgba(20,20,20,0.98), rgba(14,12,10,0.98));
+    border-color: var(--card-border-strong);
+    box-shadow: var(--card-shadow-strong);
+    transform: translateY(-5px);
+  }
   .project-card .project-title,
   .project-card h3 {
     font-size: 1.95rem;
@@ -1666,12 +1823,162 @@
   }
   .project-card:hover::after { width: 100%; }
 
+  .project-visual {
+    position: relative;
+    min-height: 11.5rem;
+    padding: 1rem;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    border: 1px solid rgba(201,169,110,0.14);
+    background:
+      radial-gradient(circle at 18% 18%, rgba(201,169,110,0.18), transparent 24%),
+      linear-gradient(135deg, rgba(33,29,23,0.98), rgba(11,11,11,0.98));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+
+  .project-visual::before,
+  .project-visual::after {
+    content: '';
+    position: absolute;
+    border-radius: 1rem;
+    pointer-events: none;
+  }
+
+  .project-visual::before {
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.08), transparent 26%),
+      linear-gradient(90deg, transparent 0, transparent calc(33% - 1px), rgba(255,255,255,0.04) calc(33% - 1px), rgba(255,255,255,0.04) 33%, transparent 33%, transparent calc(66% - 1px), rgba(255,255,255,0.04) calc(66% - 1px), rgba(255,255,255,0.04) 66%, transparent 66%);
+    opacity: 0.85;
+  }
+
+  .project-visual::after {
+    inset: 1.2rem auto auto 1.2rem;
+    width: 3.4rem;
+    height: 0.42rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.12);
+    box-shadow:
+      0 0 0 0.9rem rgba(255,255,255,0.02),
+      4.2rem 0 0 rgba(255,255,255,0.1),
+      8.4rem 0 0 rgba(255,255,255,0.08);
+  }
+
+  .project-visual-chip {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.38rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(201,169,110,0.16);
+    background: rgba(9,9,9,0.52);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.54rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  .project-visual-screen {
+    position: absolute;
+    inset: auto 1rem 1rem 1rem;
+    min-height: 6.7rem;
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 0.7rem;
+    align-items: stretch;
+  }
+
+  .project-visual-screen span {
+    position: relative;
+    border-radius: 1rem;
+    border: 1px solid rgba(201,169,110,0.12);
+    background: rgba(12,12,12,0.56);
+    overflow: hidden;
+  }
+
+  .project-visual-screen span::before,
+  .project-visual-screen span::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .project-visual-screen span:first-child::before {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.12), transparent 20%),
+      linear-gradient(180deg, rgba(201,169,110,0.34) 0 0) top 1rem left 1rem / calc(100% - 2rem) 0.38rem no-repeat,
+      linear-gradient(180deg, rgba(255,255,255,0.14) 0 0) top 2rem left 1rem / 56% 0.28rem no-repeat,
+      linear-gradient(180deg, rgba(255,255,255,0.08) 0 0) top 2.8rem left 1rem / 72% 0.28rem no-repeat,
+      linear-gradient(180deg, rgba(201,169,110,0.16) 0 0) bottom 1rem left 1rem / calc(100% - 2rem) 2.3rem no-repeat;
+  }
+
+  .project-visual-screen span:first-child::after {
+    inset: auto 1rem 1.35rem 1rem;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 -0.75rem 0 rgba(255,255,255,0.08), 0 -1.5rem 0 rgba(255,255,255,0.08);
+  }
+
+  .project-visual-screen span:last-child::before {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.12), transparent 22%),
+      linear-gradient(180deg, rgba(255,255,255,0.1) 0 0) top 1rem left 1rem / calc(100% - 2rem) 0.28rem no-repeat,
+      linear-gradient(180deg, rgba(201,169,110,0.2) 0 0) top 2rem left 1rem / 42% 3.2rem no-repeat,
+      linear-gradient(180deg, rgba(255,255,255,0.08) 0 0) top 2rem right 1rem / 30% 2rem no-repeat,
+      linear-gradient(180deg, rgba(201,169,110,0.14) 0 0) bottom 1rem left 1rem / calc(100% - 2rem) 1.5rem no-repeat;
+  }
+
+  .project-visual-screen span:last-child::after {
+    inset: auto 1rem 1.2rem 1rem;
+    height: 0.34rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 -0.65rem 0 rgba(255,255,255,0.06);
+  }
+
+  .project-visual-mybnb {
+    background:
+      radial-gradient(circle at 20% 18%, rgba(201,169,110,0.22), transparent 24%),
+      linear-gradient(135deg, rgba(28,23,18,0.98), rgba(9,9,9,0.98));
+  }
+
+  .project-visual-restaurant {
+    background:
+      radial-gradient(circle at 84% 22%, rgba(201,169,110,0.18), transparent 26%),
+      linear-gradient(135deg, rgba(20,16,13,0.98), rgba(8,8,8,0.98));
+  }
+
+  .project-visual-task {
+    background:
+      radial-gradient(circle at 18% 82%, rgba(201,169,110,0.18), transparent 26%),
+      linear-gradient(135deg, rgba(22,22,22,0.98), rgba(9,9,9,0.98));
+  }
+
+  .project-topline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
   .project-index {
     font-family: 'DM Mono', monospace;
     font-size: 0.68rem;
     color: var(--muted);
     letter-spacing: 0.15em;
-    margin-bottom: 2.5rem;
+    margin-bottom: 0;
+  }
+
+  .project-focus {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
   }
 
   .project-title {
@@ -1715,22 +2022,42 @@
     padding: 0.25rem 0.7rem;
   }
 
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    align-items: center;
+  }
+
   .project-link {
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
-    margin-top: 1.35rem;
     font-family: 'DM Mono', monospace;
     font-size: 0.64rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--gold-light);
     text-decoration: none;
-    transition: gap 0.3s, color 0.3s;
+    transition: gap 0.3s, color 0.3s, transform 0.3s, text-shadow 0.3s;
   }
   .project-link:hover {
     gap: 0.9rem;
     color: var(--gold);
+    transform: translateY(-1px);
+    text-shadow: 0 0 16px rgba(201,169,110,0.12);
+  }
+
+  .project-link-secondary {
+    padding: 0.75rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--accent-soft-border);
+    background: var(--accent-soft-bg);
+    color: var(--text);
+  }
+  .project-link-secondary:hover {
+    border-color: var(--card-border-strong);
+    background: rgba(201,169,110,0.12);
   }
 
   .projects-note {
@@ -2114,6 +2441,15 @@
     resize: vertical;
   }
 
+  .contact-honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
   .contact-field-error {
     min-height: 1rem;
     font-family: 'DM Mono', monospace;
@@ -2147,6 +2483,12 @@
     border-color: var(--cta-primary-border);
     background: var(--cta-primary-bg-hover);
     box-shadow: var(--cta-primary-shadow-hover);
+  }
+  .contact-submit:disabled {
+    cursor: wait;
+    transform: none;
+    opacity: 0.82;
+    box-shadow: var(--cta-primary-shadow);
   }
   .contact-submit:focus-visible {
     outline: 2px solid var(--gold);
@@ -2282,6 +2624,11 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
+  @keyframes loaderSweep {
+    from { transform: translateX(-130%); }
+    to   { transform: translateX(280%); }
+  }
+
   .reveal {
     opacity: 0;
     transform: translateY(28px);
@@ -2335,6 +2682,9 @@
     }
 
     .hero-actions {
+      justify-content: center;
+    }
+    .hero-inline-link {
       justify-content: center;
     }
     .hero-highlights {
@@ -2539,6 +2889,12 @@
       gap: 0.8rem 1.1rem;
     }
     .hero-cta { font-size: 0.62rem; }
+    .hero-inline-link {
+      width: 100%;
+      justify-content: center;
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+    }
     .hero-highlights {
       margin-top: 1.1rem;
       gap: 0.55rem;
@@ -2613,9 +2969,29 @@
       width: 100%;
       justify-content: center;
     }
-    .project-card { padding: 1.8rem; }
+    .project-card { padding: 1rem; }
+    .project-visual {
+      min-height: 10rem;
+    }
+    .project-visual-screen {
+      grid-template-columns: 1fr;
+      min-height: 7rem;
+    }
+    .project-topline {
+      flex-direction: column;
+      align-items: flex-start;
+    }
     .project-title { font-size: 1.25rem; }
     .project-desc { font-size: 0.9rem; }
+    .project-links {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .project-link,
+    .project-link-secondary {
+      width: 100%;
+      justify-content: center;
+    }
 
     .skills-layout { grid-template-columns: 1fr; gap: 2rem; }
     .skills-intro { font-size: 0.98rem; }
@@ -2660,6 +3036,13 @@
 </style>
 </head>
 <body>
+<div class="site-loader" id="siteLoader" aria-hidden="true">
+  <div class="site-loader-mark">
+    <p class="site-loader-title">ABKHICH<br><em>Abdelbadie</em></p>
+    <span class="site-loader-line"></span>
+    <p class="site-loader-label">Preparing portfolio</p>
+  </div>
+</div>
 <a class="skip-link" href="#content">Skip to content</a>
 
 <!-- Nav -->
@@ -2733,8 +3116,9 @@
         <h1 class="hero-name" id="heroHeading">ABKHICH<br/><em>Abdelbadie</em></h1>
         <p class="hero-tagline" id="heroTagline" data-i18n="hero.tagline">Junior web developer building clean, functional experiences with HTML/CSS/JS, PHP/Laravel, Python & MySQL.</p>
         <div class="hero-actions">
-          <a href="#projects" class="hero-cta" id="heroCTAWork" data-i18n="hero.cta.work">View selected work →</a>
-          <a href="#contact" class="hero-cta hero-cta-secondary" id="heroCTAContact" data-i18n="hero.cta.contact">Contact me →</a>
+          <a href="#projects" class="hero-cta" id="heroCTAWork" data-i18n="hero.cta.work">View selected work</a>
+          <a href="assets/ABKHICH-Abdelbadie-CV.pdf" class="hero-cta hero-cta-secondary" id="heroCTACV" data-i18n="hero.cta.cv" download>Download CV</a>
+          <a href="#contact" class="hero-inline-link" id="heroCTAContact" data-i18n="hero.cta.contact">Contact me</a>
         </div>
         <ul class="hero-highlights reveal">
           <li data-i18n="hero.highlight.one">Full-stack builds from interface to database</li>
@@ -2792,54 +3176,92 @@
     <h2 class="section-title reveal" id="projectsTitle" data-i18n="projects.title" data-i18n-html="true">Projects built<br/><em>with purpose</em></h2>
     <div class="divider reveal"></div>
     <div class="projects-toolbar reveal">
-      <p class="projects-summary" data-i18n="projects.summary">Filter the work by focus area and quickly see where I deliver the most value.</p>
+      <p class="projects-summary" data-i18n="projects.summary">Filter the work by delivery focus and scan the projects that lean backend or frontend.</p>
       <div class="project-filters" id="projectFilters" role="toolbar" aria-label="Project filters">
         <button class="project-filter is-active" type="button" data-filter="all" aria-pressed="true" data-i18n="filters.all">All work</button>
-        <button class="project-filter" type="button" data-filter="fullstack" aria-pressed="false" data-i18n="filters.fullstack">Full-stack</button>
-        <button class="project-filter" type="button" data-filter="laravel" aria-pressed="false" data-i18n="filters.laravel">Laravel</button>
+        <button class="project-filter" type="button" data-filter="backend" aria-pressed="false" data-i18n="filters.backend">Backend</button>
         <button class="project-filter" type="button" data-filter="frontend" aria-pressed="false" data-i18n="filters.frontend">Frontend</button>
       </div>
     </div>
     <p class="projects-results reveal" id="projectResults" aria-live="polite" data-i18n="projects.results">Visible projects: 3</p>
 
     <div class="projects-grid">
-      <article class="project-card reveal" data-project-card data-filter-tags="fullstack laravel backend">
-        <p class="project-index" data-i18n="projects.mybnb.index">Case Study 01</p>
+      <article class="project-card reveal" data-project-card data-filter-tags="backend">
+        <div class="project-visual project-visual-mybnb" aria-hidden="true">
+          <span class="project-visual-chip">Laravel / MySQL</span>
+          <div class="project-visual-screen">
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="project-topline">
+          <p class="project-index" data-i18n="projects.mybnb.index">Case Study 01</p>
+          <p class="project-focus" data-i18n="filters.backend">Backend</p>
+        </div>
         <h3 class="project-title">MYBNB</h3>
-        <p class="project-proof" data-i18n="projects.mybnb.proof">Property search · booking flow · host dashboard</p>
-        <p class="project-desc" data-i18n="projects.mybnb.desc">Moroccan Airbnb alternative built from scratch. Features property search by location, full booking system, guest reviews & ratings, secure user authentication, host dashboard for managing listings, integrated payment processing, and price filtering.</p>
+        <p class="project-proof" data-i18n="projects.mybnb.proof">Property search / booking flow / host dashboard</p>
+        <p class="project-desc" data-i18n="projects.mybnb.desc">Moroccan Airbnb alternative built from scratch. Features property search by location, full booking system, guest reviews and ratings, secure user authentication, a host dashboard for managing listings, integrated payment processing, and price filtering.</p>
         <div class="project-tags">
           <span class="tag">HTML/CSS</span>
           <span class="tag">JavaScript</span>
           <span class="tag">PHP/Laravel</span>
           <span class="tag">MySQL</span>
         </div>
-        <a href="#contact" class="project-link" data-i18n="projects.cta">Discuss this build →</a>
+        <div class="project-links">
+          <a href="#contact" class="project-link" data-i18n="projects.ctaPrimary">Request walkthrough</a>
+          <a href="https://github.com/badiebakch90-ops" class="project-link project-link-secondary" target="_blank" rel="noopener noreferrer" data-i18n="projects.ctaSecondary">GitHub profile</a>
+        </div>
       </article>
-      <article class="project-card reveal" data-project-card data-filter-tags="fullstack laravel backend">
-        <p class="project-index" data-i18n="projects.restaurant.index">Case Study 02</p>
+      <article class="project-card reveal" data-project-card data-filter-tags="backend">
+        <div class="project-visual project-visual-restaurant" aria-hidden="true">
+          <span class="project-visual-chip">Reservations / Admin</span>
+          <div class="project-visual-screen">
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="project-topline">
+          <p class="project-index" data-i18n="projects.restaurant.index">Case Study 02</p>
+          <p class="project-focus" data-i18n="filters.backend">Backend</p>
+        </div>
         <h3 class="project-title">Restaurant Reservation System</h3>
-        <p class="project-proof" data-i18n="projects.restaurant.proof">Menu browsing · reservations · admin control</p>
-        <p class="project-desc" data-i18n="projects.restaurant.desc">Full-stack restaurant management platform. Users can browse menus, make reservations, manage bookings, and leave reviews. Admin dashboard for managing availability, tables, and customer reservations in real time.</p>
+        <p class="project-proof" data-i18n="projects.restaurant.proof">Menu browsing / reservations / admin control</p>
+        <p class="project-desc" data-i18n="projects.restaurant.desc">Full-stack restaurant management platform. Users can browse menus, make reservations, manage bookings, and leave reviews. It includes an admin dashboard for handling availability, tables, and reservations in real time.</p>
         <div class="project-tags">
           <span class="tag">HTML/CSS</span>
           <span class="tag">JavaScript</span>
           <span class="tag">PHP/Laravel</span>
           <span class="tag">MySQL</span>
         </div>
-        <a href="#contact" class="project-link" data-i18n="projects.cta">Discuss this build →</a>
+        <div class="project-links">
+          <a href="#contact" class="project-link" data-i18n="projects.ctaPrimary">Request walkthrough</a>
+          <a href="https://github.com/badiebakch90-ops" class="project-link project-link-secondary" target="_blank" rel="noopener noreferrer" data-i18n="projects.ctaSecondary">GitHub profile</a>
+        </div>
       </article>
-      <article class="project-card reveal" data-project-card data-filter-tags="frontend javascript">
-        <p class="project-index" data-i18n="projects.task.index">Case Study 03</p>
+      <article class="project-card reveal" data-project-card data-filter-tags="frontend">
+        <div class="project-visual project-visual-task" aria-hidden="true">
+          <span class="project-visual-chip">Vanilla JS / UX</span>
+          <div class="project-visual-screen">
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="project-topline">
+          <p class="project-index" data-i18n="projects.task.index">Case Study 03</p>
+          <p class="project-focus" data-i18n="filters.frontend">Frontend</p>
+        </div>
         <h3 class="project-title">Task Manager App</h3>
-        <p class="project-proof" data-i18n="projects.task.proof">Vanilla JS state · deadlines · local storage</p>
-        <p class="project-desc" data-i18n="projects.task.desc">A personal productivity tool for managing daily tasks and to-do lists. Features include task creation, categorization, priority levels, deadline tracking, and persistent storage. Built to understand front-end state management and DOM manipulation.</p>
+        <p class="project-proof" data-i18n="projects.task.proof">Vanilla JS state / deadlines / local storage</p>
+        <p class="project-desc" data-i18n="projects.task.desc">A personal productivity tool for managing daily tasks and to-do lists. Features include task creation, categorization, priority levels, deadline tracking, and persistent storage.</p>
         <div class="project-tags">
           <span class="tag">HTML/CSS</span>
           <span class="tag">JavaScript</span>
           <span class="tag">LocalStorage</span>
         </div>
-        <a href="#contact" class="project-link" data-i18n="projects.cta">Discuss this build →</a>
+        <div class="project-links">
+          <a href="#contact" class="project-link" data-i18n="projects.ctaPrimary">Request walkthrough</a>
+          <a href="https://github.com/badiebakch90-ops" class="project-link project-link-secondary" target="_blank" rel="noopener noreferrer" data-i18n="projects.ctaSecondary">GitHub profile</a>
+        </div>
       </article>
     </div>
     <p class="projects-note reveal" data-i18n="projects.note" data-i18n-html="true">Want the full story behind one of these builds? <a href="#contact">Let's talk through the code, decisions, and tradeoffs.</a></p>
@@ -2929,6 +3351,10 @@
         <div class="contact-form-card reveal">
           <p class="contact-card-label" data-i18n="contact.form.kicker">Start a conversation</p>
           <form class="contact-form" id="contactForm" novalidate>
+            <label class="contact-honeypot" aria-hidden="true">
+              Company
+              <input id="contactCompany" name="company" type="text" tabindex="-1" autocomplete="off">
+            </label>
             <div class="contact-form-grid">
               <label class="contact-field">
                 <span class="contact-field-label" data-i18n="contact.form.name.label">Name</span>
@@ -2937,7 +3363,7 @@
               </label>
               <label class="contact-field">
                 <span class="contact-field-label" data-i18n="contact.form.email.label">Email</span>
-                <input class="contact-input" id="contactEmail" name="email" type="email" autocomplete="email" required>
+                <input class="contact-input" id="contactEmail" name="email" type="email" inputmode="email" autocomplete="email" required>
                 <span class="contact-field-error" id="contactEmailError" aria-live="polite"></span>
               </label>
               <label class="contact-field contact-field-full">
@@ -2972,8 +3398,8 @@
                 <span class="contact-field-error" id="contactMessageError" aria-live="polite"></span>
               </label>
             </div>
-            <button class="contact-submit" id="contactSubmit" type="submit" data-i18n="contact.form.submit">Open email draft →</button>
-            <p class="contact-form-note" data-i18n="contact.form.note">This static portfolio validates your message and prepares an email draft in your mail app.</p>
+            <button class="contact-submit" id="contactSubmit" type="submit" data-i18n="contact.form.submit">Send message</button>
+            <p class="contact-form-note" data-i18n="contact.form.note">Messages are validated on the client and sent through a secure Vercel serverless endpoint.</p>
             <p class="contact-form-status" id="contactFormStatus" role="status" aria-live="polite"></p>
           </form>
         </div>
@@ -3012,7 +3438,6 @@
     filter: 'portfolio-project-filter'
   };
 
-  const SITE_EMAIL = 'badie3079@gmail.com';
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   const nav = document.getElementById('navbar');
@@ -3046,6 +3471,8 @@
 
   const contactForm = document.getElementById('contactForm');
   const contactFormStatus = document.getElementById('contactFormStatus');
+  const contactSubmit = document.getElementById('contactSubmit');
+  const contactCompany = document.getElementById('contactCompany');
   const projectTypeSelect = document.getElementById('projectTypeSelect');
   const contactTypeTrigger = document.getElementById('contactTypeTrigger');
   const contactTypeMenu = document.getElementById('contactTypeMenu');
@@ -3360,6 +3787,54 @@
     }
   };
 
+  Object.assign(translations.en, {
+    'hero.cta.work': 'View selected work',
+    'hero.cta.cv': 'Download CV',
+    'hero.cta.contact': 'Contact me',
+    'projects.summary': 'Filter the work by delivery focus and scan the projects that lean backend or frontend.',
+    'projects.ctaPrimary': 'Request walkthrough',
+    'projects.ctaSecondary': 'GitHub profile',
+    'filters.backend': 'Backend',
+    'contact.form.submit': 'Send message',
+    'contact.form.submitLoading': 'Sending...',
+    'contact.form.note': 'Messages are validated on the client and sent through a secure Vercel serverless endpoint.',
+    'contact.form.status.success': 'Your message was sent. I will get back to you soon.',
+    'contact.form.status.error': 'Something went wrong while sending. Please try again or email me directly.',
+    'contact.form.status.validation': 'Please fix the highlighted fields and try again.'
+  });
+
+  Object.assign(translations.fr, {
+    'hero.cta.work': 'Voir mes realisations',
+    'hero.cta.cv': 'Telecharger le CV',
+    'hero.cta.contact': 'Contactez-moi',
+    'projects.summary': 'Filtrez les projets par axe de livraison pour voir rapidement ceux qui sont plus backend ou frontend.',
+    'projects.ctaPrimary': 'Demander une presentation',
+    'projects.ctaSecondary': 'Profil GitHub',
+    'filters.backend': 'Backend',
+    'contact.form.submit': 'Envoyer le message',
+    'contact.form.submitLoading': 'Envoi...',
+    'contact.form.note': 'Les messages sont valides cote client puis envoyes via un endpoint serverless Vercel securise.',
+    'contact.form.status.success': 'Votre message a ete envoye. Je vous repondrai bientot.',
+    'contact.form.status.error': 'Une erreur est survenue pendant l envoi. Reessayez ou contactez-moi directement par email.',
+    'contact.form.status.validation': 'Corrigez les champs signales puis reessayez.'
+  });
+
+  Object.assign(translations.ar, {
+    'hero.cta.work': 'عرض الأعمال',
+    'hero.cta.cv': 'تحميل السيرة الذاتية',
+    'hero.cta.contact': 'تواصل معي',
+    'projects.summary': 'صف المشاريع حسب اتجاه العمل لرؤية ما يركز أكثر على الخلفية أو الواجهة.',
+    'projects.ctaPrimary': 'اطلب عرضا للمشروع',
+    'projects.ctaSecondary': 'حساب GitHub',
+    'filters.backend': 'الخلفية',
+    'contact.form.submit': 'إرسال الرسالة',
+    'contact.form.submitLoading': 'جارٍ الإرسال...',
+    'contact.form.note': 'يتم التحقق من الرسالة في الواجهة ثم إرسالها عبر مسار Vercel آمن.',
+    'contact.form.status.success': 'تم إرسال رسالتك. سأرد عليك قريباً.',
+    'contact.form.status.error': 'حدث خطأ أثناء الإرسال. حاول مرة أخرى أو راسلني مباشرة.',
+    'contact.form.status.validation': 'يرجى تصحيح الحقول المحددة ثم المحاولة مرة أخرى.'
+  });
+
   function interpolate(value, vars = {}) {
     return value.replace(/\{(\w+)\}/g, (_, key) => String(vars[key] ?? ''));
   }
@@ -3493,18 +3968,28 @@
     projectResults.textContent = translate(currentLanguage, 'projects.results', { count: String(visibleCount) });
   }
 
-  function setFormStatus(state = '') {
+  function updateContactSubmitLabel() {
+    if (!contactSubmit) return;
+
+    const key = contactForm?.dataset.sending === 'true'
+      ? 'contact.form.submitLoading'
+      : 'contact.form.submit';
+
+    contactSubmit.textContent = translate(currentLanguage, key);
+  }
+
+  function setFormStatus(state = '', key = '') {
     if (!contactFormStatus) return;
 
     contactFormStatus.dataset.state = state;
+    contactFormStatus.dataset.key = key;
     contactFormStatus.className = 'contact-form-status';
 
-    if (!state) {
+    if (!state || !key) {
       contactFormStatus.textContent = '';
       return;
     }
 
-    const key = state === 'success' ? 'contact.form.status.success' : 'contact.form.status.error';
     contactFormStatus.textContent = translate(currentLanguage, key);
     contactFormStatus.classList.add('is-visible', state === 'success' ? 'is-success' : 'is-error');
   }
@@ -3654,13 +4139,14 @@
     updateMeta(safeLang);
     updateProjectResults();
     syncProjectTypeSelect();
+    updateContactSubmitLabel();
 
     if (contactForm?.dataset.attempted === 'true') {
       Object.keys(formFields).forEach(validateField);
     }
 
-    if (contactFormStatus?.dataset.state) {
-      setFormStatus(contactFormStatus.dataset.state);
+    if (contactFormStatus?.dataset.state && contactFormStatus?.dataset.key) {
+      setFormStatus(contactFormStatus.dataset.state, contactFormStatus.dataset.key);
     }
 
     localStorage.setItem(STORAGE_KEYS.language, safeLang);
@@ -3832,6 +4318,8 @@
   function initContactForm() {
     if (!contactForm) return;
 
+    updateContactSubmitLabel();
+
     Object.entries(formFields).forEach(([fieldName, field]) => {
       field.addEventListener('blur', () => validateField(fieldName));
       field.addEventListener('input', () => {
@@ -3840,7 +4328,7 @@
         }
 
         if (contactFormStatus.dataset.state === 'error') {
-          setFormStatus('');
+          setFormStatus('', '');
         }
       });
     });
@@ -3914,39 +4402,68 @@
       });
     }
 
-    contactForm.addEventListener('submit', (event) => {
+    contactForm.addEventListener('submit', async (event) => {
       event.preventDefault();
       contactForm.dataset.attempted = 'true';
 
       const isValid = Object.keys(formFields).every(validateField);
 
       if (!isValid) {
-        setFormStatus('error');
+        setFormStatus('error', 'contact.form.status.validation');
         return;
       }
 
-      const selectedTypeLabel = getSelectedProjectTypeOption()?.textContent.trim() || '';
-      const subject = encodeURIComponent(`Portfolio inquiry: ${selectedTypeLabel} — ${formFields.name.value.trim()}`);
-      const body = encodeURIComponent(
-        [
-          `Name: ${formFields.name.value.trim()}`,
-          `Email: ${formFields.email.value.trim()}`,
-          `Project type: ${selectedTypeLabel}`,
-          '',
-          formFields.message.value.trim()
-        ].join('\n')
-      );
+      contactForm.dataset.sending = 'true';
+      if (contactSubmit) {
+        contactSubmit.disabled = true;
+        contactSubmit.setAttribute('aria-busy', 'true');
+      }
+      updateContactSubmitLabel();
+      setFormStatus('', '');
 
-      window.location.href = `mailto:${SITE_EMAIL}?subject=${subject}&body=${body}`;
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: formFields.name.value.trim(),
+            email: formFields.email.value.trim(),
+            projectType: formFields.type.value,
+            projectTypeLabel: getSelectedProjectTypeOption()?.textContent.trim() || '',
+            message: formFields.message.value.trim(),
+            company: contactCompany?.value.trim() || ''
+          })
+        });
 
-      contactForm.reset();
-      syncProjectTypeSelect();
-      clearContactErrors();
-      contactForm.dataset.attempted = 'false';
-      setFormStatus('success');
+        if (!response.ok) {
+          throw new Error('Request failed');
+        }
+
+        const payload = await response.json();
+        if (!payload.ok) {
+          throw new Error(payload.message || 'Submission failed');
+        }
+
+        contactForm.reset();
+        syncProjectTypeSelect();
+        clearContactErrors();
+        contactForm.dataset.attempted = 'false';
+        setFormStatus('success', 'contact.form.status.success');
+      } catch (error) {
+        setFormStatus('error', 'contact.form.status.error');
+      } finally {
+        contactForm.dataset.sending = 'false';
+        if (contactSubmit) {
+          contactSubmit.disabled = false;
+          contactSubmit.setAttribute('aria-busy', 'false');
+        }
+        updateContactSubmitLabel();
+      }
     });
   }
-
   function initRevealAnimations() {
     if (prefersReducedMotion.matches) {
       reveals.forEach((element) => element.classList.add('visible'));
@@ -3974,6 +4491,10 @@
     tracks.forEach((track) => skillObserver.observe(track));
   }
 
+  function markSiteReady() {
+    document.body.classList.add('is-ready');
+  }
+
   const browserLanguage = (navigator.language || 'en').toLowerCase();
   const preferredLanguage = localStorage.getItem(STORAGE_KEYS.language)
     || (browserLanguage.startsWith('fr') ? 'fr' : browserLanguage.startsWith('ar') ? 'ar' : 'en');
@@ -3989,6 +4510,13 @@
   initContactForm();
   initRevealAnimations();
   nav.classList.toggle('scrolled', window.scrollY > 40);
+
+  if (document.readyState === 'complete') {
+    markSiteReady();
+  } else {
+    window.addEventListener('load', markSiteReady, { once: true });
+    window.setTimeout(markSiteReady, 1400);
+  }
 </script>
 </body>
 </html>

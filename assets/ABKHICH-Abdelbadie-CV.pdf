@@ -1,0 +1,59 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1047 >>
+stream
+BT
+/F1 24 Tf
+72 770 Td
+(ABKHICH Abdelbadie) Tj
+0 -28 Td
+/F1 13 Tf
+(Junior Full-Stack Web Developer) Tj
+0 -24 Td
+(Morocco  |  badie3079@gmail.com  |  github.com/badiebakch90-ops) Tj
+0 -34 Td
+/F1 11 Tf
+(Profile) Tj
+0 -18 Td
+(Junior developer building clean web experiences with HTML CSS JavaScript PHP Laravel Python and MySQL.) Tj
+0 -16 Td
+(Open to freelance internships and junior full-time opportunities.) Tj
+0 -30 Td
+(Core Skills) Tj
+0 -18 Td
+(Frontend: HTML CSS JavaScript responsive UI and interaction design.) Tj
+0 -16 Td
+(Backend: PHP Laravel Python MySQL authentication CRUD booking and admin flows.) Tj
+0 -30 Td
+(Selected Projects) Tj
+0 -18 Td
+(MYBNB - Airbnb-style booking platform with search booking reviews host dashboard and payments.) Tj
+0 -16 Td
+(Restaurant Reservation System - Reservations menu browsing and admin management platform.) Tj
+0 -16 Td
+(Task Manager App - Vanilla JavaScript productivity app with priorities deadlines and local storage.) Tj
+0 -30 Td
+(Portfolio generated from live project data on April 19 2026.) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n `n0000000058 00000 n `n0000000115 00000 n `n0000000241 00000 n `n0000001340 00000 n `ntrailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1410
+%%EOF
